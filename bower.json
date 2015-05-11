@@ -1,0 +1,22 @@
+{
+  "name": "gulp-react-workflow",
+  "version": "0.0.1",
+  "homepage": "https://github.com/tnaught/gulp-react-workflow",
+  "authors": [
+    "tianqin <tianqin@dianxinos.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "font-awesome": "~4.3.0",
+    "jquery": "~2.1.4",
+    "react": "~0.13.3"
+  }
+}

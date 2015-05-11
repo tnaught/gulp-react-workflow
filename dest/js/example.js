@@ -1,1 +1,8 @@
-!function e(r,t,n){function a(i,u){if(!t[i]){if(!r[i]){var f="function"==typeof require&&require;if(!u&&f)return f(i,!0);if(o)return o(i,!0);throw new Error("Cannot find module '"+i+"'")}var c=t[i]={exports:{}};r[i][0].call(c.exports,function(e){var t=r[i][1][e];return a(t?t:e)},c,c.exports,e,r,t,n)}return t[i].exports}for(var o="function"==typeof require&&require,i=0;i<n.length;i++)a(n[i]);return a}({1:[function(){React.createClass({displayName:"Example",render:function(){return React.createElement("a",{className:"anchor",href:"http://example.com",title:"example"},"example")}})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Example = React.createClass({displayName: "Example",
+	render: function() {
+		return React.createElement("a", {className: "anchor", href: "http://example.com", title: "example"}, "example");
+	}
+})
+
+},{}]},{},[1]);

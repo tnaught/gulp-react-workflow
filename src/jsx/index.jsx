@@ -1,13 +1,10 @@
-// var HelloWorld = require('./HelloWorld');
-var Button =require('react-bootstrap').Button;
+/**
+ *首页
+**/
+var config = require('./config');
+var Platforms = require('./controllers/Platforms');
 
-var _modules = [
-    "gulp",
-    "react",
-    "browserify",
-    "compass",
-    "uglify",
-    "minify-css"
-];
-
-React.render(<Alert />, document.body);
+var _platforms = config.platforms || [];
+React.render(
+<Platforms data = {_platforms}/>,
+document.body);

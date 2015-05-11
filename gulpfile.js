@@ -1,17 +1,29 @@
 var gulp       = require('gulp');
-var react      = require('gulp-react');
-var browserify = require('gulp-browserify');
-var compass    = require('gulp-compass');
+var browserify = require('browserify');
+var reactify   = require('reactify');
+var source     = require("vinyl-source-stream");
+var through    = require('through2');
 var uglify     = require('gulp-uglify');
+var compass    = require('gulp-compass');
 var minifycss  = require('gulp-minify-css');
 var gutil      = require('gulp-util');
 
 gulp.task('build_js', function() {
-  gulp.src('./src/jsx/**/*.jsx')
-    .pipe(react().on('error', gutil.log))    
-    .pipe(browserify({ transform: ['reactify'], extensions: ['.jsx'] }).on('error', gutil.log))
-    .pipe(uglify())
-    .pipe(gulp.dest('./dest/js/'));
+  var browserified = function() {
+      return through.obj(function(chunk, enc, callback) {
+          if(chunk.isBuffer()) {
+              var b = browserify(chunk.path, {extensions: ['.jsx']});
+              b.transform(reactify);
+              chunk.contents = b.bundle();
+              chunk.path = chunk.path.replace('.jsx', '.js');
+              this.push(chunk);
+          }
+          callback();
+      });
+  };
+  return gulp.src(['./src/jsx/**/*.jsx'])
+      .pipe(browserified())
+      .pipe(gulp.dest('./dest/js'));
 });
 
 gulp.task('build_css', function () {
