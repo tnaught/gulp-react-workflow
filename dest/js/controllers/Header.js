@@ -5,19 +5,22 @@ var Header = React.createClass({displayName: "Header",
             className: '',
             data: {
                 title: 'XX平台'
-            }
+            },
         }
+    },
+    toggleMenu: function() {
+        $('body').toggleClass('fullscreen');
     },
     render: function() {
         return (
-            React.createElement("div", null, 
+            React.createElement("header", {id: "header"}, 
                 React.createElement("a", {href: "#", className: "logo"}, 
                     React.createElement("div", {className: "logos"}), 
                     React.createElement("h2", {className: "brand"}, this.props.data.title)
                 ), 
                 React.createElement("div", {className: "topbar"}, 
-                    React.createElement("i", {className: "switch_menu"}, 
-                        React.createElement("i", {className: "icon-reorder"})
+                    React.createElement("i", {className: "switch_menu icon-btn", onClick: this.toggleMenu}, 
+                        React.createElement("i", {className: "fa fa-reorder"})
                     )
                 )
             )

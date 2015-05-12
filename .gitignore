@@ -3,3 +3,5 @@
  
 #sass cache files
 .sass-cache
+control.sublime-workspace
+bower_components

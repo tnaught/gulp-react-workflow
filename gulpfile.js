@@ -7,12 +7,13 @@ var uglify     = require('gulp-uglify');
 var compass    = require('gulp-compass');
 var minifycss  = require('gulp-minify-css');
 var gutil      = require('gulp-util');
+var streamify  = require('gulp-streamify');
 
 gulp.task('build_js', function() {
   var browserified = function() {
       return through.obj(function(chunk, enc, callback) {
           if(chunk.isBuffer()) {
-              var b = browserify(chunk.path, {extensions: ['.jsx']});
+              var b = browserify(chunk.path, {extensions: ['.jsx', '.js']});
               b.transform(reactify);
               chunk.contents = b.bundle();
               chunk.path = chunk.path.replace('.jsx', '.js');
@@ -23,6 +24,7 @@ gulp.task('build_js', function() {
   };
   return gulp.src(['./src/jsx/**/*.jsx'])
       .pipe(browserified())
+      // .pipe(streamify(uglify()))
       .pipe(gulp.dest('./dest/js'));
 });
 

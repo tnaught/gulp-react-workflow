@@ -50,7 +50,7 @@ module.exports = React.createClass({displayName: "exports",
         this.refs.list.api();
     },
     render: function() {
-        onreturn (React.createElement("div", null, React.createElement(Search, {onkeyWordChange: this.onkeyWordChangeHanlder}), React.createElement(List, {ref: "list", modules: this.props.modules, keyWord: this.state.keyWord})))
+        return (React.createElement("div", null, React.createElement(Search, {onkeyWordChange: this.onkeyWordChangeHanlder}), React.createElement(List, {ref: "list", modules: this.props.modules, keyWord: this.state.keyWord})))
     }
 })
 

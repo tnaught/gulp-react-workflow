@@ -1,6 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = {
-    //接入的平台配置
     platforms: [
     {
         key: 'recommend',
@@ -8,34 +7,33 @@ module.exports = {
         url: 'recommend/index.html',
         menus: [
         {
-           key: 'pushrate',
-           title: '下发率',
-           url: 'pushrate.html',
+           key: 'link1',
+           title: '链接1',
+           url: 'index.html',
            subMenus: []
         }
         ,{
-           key: 'pvAuv',
-           title: 'pv和uv',
-           url: 'pvAuv.html',
-           subMenus: [] 
-        }
-        ,{
-           key: 'robustOserver',
-           title: '服务健壮性',
-           url: 'robustOserver.html',
-           subMenus: [] 
-        }
-        ,{
-           key: 'robustOngnix',
-           url: 'robustOngnix.html',
-           title: 'ngnix健壮性',
+           key: 'link2',
+           title: '链接2',
+           url: 'link2.html',
            subMenus: []
+        }
+        ,{
+           key: 'folder1',
+           title: '一级目录',
+           subMenus: [{
+                key: 'link3',
+                title: '链接3',
+                url: 'link3.html',
+                subMenus: []
+           },
+           {
+                key: 'link4',
+                title: '链接4',
+                url: 'link4.html',
+                subMenus: []
+           }]
         }]
-    } 
-    ,{
-        key: 'rubbish',
-        title: '垃圾管理平台',
-        url: 'rubbish/index.html'
     }]
 };
 

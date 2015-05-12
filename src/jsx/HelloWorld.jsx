@@ -49,7 +49,7 @@ module.exports = React.createClass({
         this.refs.list.api();
     },
     render: function() {
-        onreturn (<div><Search onkeyWordChange={this.onkeyWordChangeHanlder}/><List ref="list" modules={this.props.modules} keyWord={this.state.keyWord}/></div>)
+        return (<div><Search onkeyWordChange={this.onkeyWordChangeHanlder}/><List ref="list" modules={this.props.modules} keyWord={this.state.keyWord}/></div>)
     }
 })
 

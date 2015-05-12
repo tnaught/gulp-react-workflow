@@ -2,12 +2,17 @@
 var LeftNav = React.createClass({displayName: "LeftNav",
     getDefaultProps: function() {
         return {
+            title: '11',
             data: []
         }
     },
+    isActive: function(url) {
+        var pathname = window.location.pathname;
+        return (new RegExp(url).test(pathname));
+    },
     render: function() {
         return (
-            React.createElement("div", null, 
+            React.createElement("aside", {id: "navigator"}, 
                 React.createElement("i", {className: "nav-placeholder"}), 
                 React.createElement("i", {className: "logo-placeholder"}), 
                 React.createElement("ul", {className: "nav"}, 
@@ -15,23 +20,23 @@ var LeftNav = React.createClass({displayName: "LeftNav",
                         this.props.data.map(function(menu) {
                             if(menu.subMenus && menu.subMenus.length > 0) {
                                 return (
-                                    React.createElement("li", {className: ""}, 
-                                        React.createElement("a", {className: "nav-title", href: "javascript:;"}, React.createElement("i", {className: "icon-file"}), React.createElement("span", {className: "title"}, menu.title), React.createElement("i", {className: "array icon-double-angle-right"})), 
-                                        React.createElement("ul", {className: "sub-nav"}, 
+                                    React.createElement("li", {className: "unfold"}, 
+                                        React.createElement("a", {className: "nav-title", href: "javascript:;"}, React.createElement("i", {className: "fa fa-file"}), React.createElement("span", {className: "title"}, menu.title), React.createElement("i", {className: "array icon-double-angle-right"})), 
+                                        React.createElement("ul", {className: "sub-nav", style: {display:"block"}}, 
                                             
                                                 menu.subMenus.map(function(sub) {
                                                     return (
-                                                        React.createElement("li", null, React.createElement("a", {className: "nav-link", href: "javascript:;"}, React.createElement("span", {className: "title"}, sub.title)))
+                                                        React.createElement("li", {className: this.isActive(sub.url) ? " active" : ""}, React.createElement("a", {className: "nav-link", href: sub.url}, React.createElement("span", {className: "title"}, sub.title)))
                                                     )
-                                                })
+                                                }.bind(this))
                                             
                                         )
                                     ))
                             }
                             else {
-                                return React.createElement("li", null, React.createElement("a", {className: "nav-link", href: "javascript:;", url: "{menu.url}"}, React.createElement("i", {className: "icon-sign-blank"}), React.createElement("span", {className: "title"}, menu.title)))  
+                                return React.createElement("li", {className: this.isActive(menu.url) ? " active" : ""}, React.createElement("a", {className: "nav-link", href: menu.url}, React.createElement("i", {className: "fa fa-sign-blank"}), React.createElement("span", {className: "title"}, menu.title)))  
                             }
-                        })
+                        }.bind(this))
                     
                 )
             )

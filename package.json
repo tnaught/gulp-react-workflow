@@ -17,6 +17,8 @@
     "gulp-react": "~3.0.1",
     "gulp-compass": "~2.0.4",
     "gulp-minify-css": "~1.1.1",
-    "reactify": "~1.1.0"
+    "reactify": "~1.1.0",
+    "gulp-streamify": "^0.0.5",
+    "react-bootstrap": "0.21.2"
   }
 }
